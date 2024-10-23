@@ -17,7 +17,11 @@ const RecentPosts = async () => {
       </div>
 
       <div className="grid grid-cols-1 gap-10 md:grid-cols-44 justify-center lg:grid-cols-3 my-8">
-        <div>Recent posts</div>
+        <div>
+          {posts?.map((post) => (
+            <div key={post._id}>{post.title}</div>
+          ))}
+        </div>
       </div>
       <div className="flex justify-center">
         <Button className="rounded-md bg-default-900 text-default" size="md">
