@@ -18,6 +18,7 @@ import { Logo } from "@/src/components/icons";
 import { ThemeSwitch } from "./theme-switch";
 import NavbarDropdown from "./NavbarDropdown";
 import { useUser } from "@/src/context/user.provider";
+import { Button } from "@nextui-org/button";
 
 export const Navbar = () => {
   const { user, isLoading } = useUser();
@@ -62,7 +63,9 @@ export const Navbar = () => {
             <NavbarDropdown />
           </NavbarItem>
         ) : (
-          <Link href="/login">Login</Link>
+          <Link href="/login">
+            <Button>Login</Button>
+          </Link>
         )}
       </NavbarContent>
 

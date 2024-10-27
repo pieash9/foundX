@@ -38,6 +38,7 @@ const CreatePostPage = () => {
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <FXInput name="title" label="Title" />
+
           <Divider className="my-5" />
 
           <div className="my-5 flex justify-between items-center">
