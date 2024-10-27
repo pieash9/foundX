@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useContext, useEffect, useState } from "react";
 import { IUser } from "../types";
 import { getCurrentUser } from "../services/authService";
@@ -23,7 +25,7 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     handleUser();
-  }, []);
+  }, [isLoading]);
 
   return (
     <UserContext.Provider value={{ user, setUser, isLoading, setIsLoading }}>

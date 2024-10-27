@@ -16,7 +16,6 @@ export default function RegisterPage() {
     data,
   } = useUserRegistration();
 
-  console.log({ isPending, isSuccess, isError, data });
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const userData = {
       ...data,

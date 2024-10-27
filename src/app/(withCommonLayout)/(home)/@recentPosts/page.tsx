@@ -7,7 +7,6 @@ import Card from "@/src/components/ui/Card";
 
 const RecentPosts = async () => {
   const { data: posts } = await getRecentPosts();
-  console.log(posts);
 
   return (
     <Container>
@@ -19,9 +18,7 @@ const RecentPosts = async () => {
       </div>
 
       <div className="grid grid-cols-1 gap-10 md:grid-cols-44 justify-center lg:grid-cols-3 my-8">
-        {posts?.map((post: IPost) => (
-          <Card key={post._id} post={post} />
-        ))}
+        {posts?.map((post: IPost) => <Card key={post._id} post={post} />)}
       </div>
       <div className="flex justify-center">
         <Button className="rounded-md bg-default-900 text-default" size="md">

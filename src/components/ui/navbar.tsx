@@ -20,7 +20,8 @@ import NavbarDropdown from "./NavbarDropdown";
 import { useUser } from "@/src/context/user.provider";
 
 export const Navbar = () => {
-  const { user } = useUser();
+  const { user, isLoading } = useUser();
+  console.log(isLoading, user);
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
@@ -79,8 +80,8 @@ export const Navbar = () => {
                   index === 2
                     ? "primary"
                     : index === siteConfig.navMenuItems.length - 1
-                    ? "danger"
-                    : "foreground"
+                      ? "danger"
+                      : "foreground"
                 }
                 href="#"
                 size="lg"
