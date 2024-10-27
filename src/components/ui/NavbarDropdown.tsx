@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 
 const NavbarDropdown = () => {
   const router = useRouter();
+
   return (
     <Dropdown>
       <DropdownTrigger>

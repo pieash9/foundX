@@ -40,8 +40,8 @@ export interface IUser {
   email: string;
   status: string;
   mobileNumber: string;
-  profilePhoto: string;
+  profilePhoto?: string;
   createdAt?: string;
   updatedAt?: string;
-  __v: number;
+  __v?: number;
 }
