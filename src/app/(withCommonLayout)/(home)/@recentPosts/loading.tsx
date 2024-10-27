@@ -14,8 +14,8 @@ const RecentPostLoading = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-10 md:grid-cols-44 justify-center lg:grid-cols-3 my-8">
-        {[...Array(9)]?.map(() => (
-          <CardSkeleton />
+        {[...Array(9)]?.map((_, index) => (
+          <CardSkeleton key={index} />
         ))}
       </div>
       <div className="flex justify-center">

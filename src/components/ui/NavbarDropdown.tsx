@@ -1,5 +1,6 @@
 "use client";
 
+import { logout } from "@/src/services/authService";
 import { Avatar } from "@nextui-org/avatar";
 import {
   Dropdown,
@@ -29,20 +30,19 @@ const NavbarDropdown = () => {
         </DropdownItem>
 
         <DropdownItem
-          onClick={() => router.push("/profile/claim-request")}
-          key="delete"
-        >
-          Claim Request
-        </DropdownItem>
-
-        <DropdownItem
           onClick={() => router.push("/profile/settings")}
           key="Settings"
         >
           Settings
         </DropdownItem>
-        <DropdownItem onClick={() => router.push("/profile/about")} key="About">
-          About
+
+        <DropdownItem
+          onClick={() => logout()}
+          key={"Logout"}
+          className="text-danger"
+          color="danger"
+        >
+          Logout
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>
