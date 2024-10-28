@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
   baseURL: envConfig.baseApi,
 });
 
-axios.interceptors.request.use(
+axiosInstance.interceptors.request.use(
   function (config) {
     const cookieStore = cookies();
     const accessToken = cookieStore.get("accessToken")?.value;
@@ -23,7 +23,7 @@ axios.interceptors.request.use(
   },
 );
 
-axios.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   function (response) {
     return response;
   },
