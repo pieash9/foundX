@@ -82,8 +82,8 @@ const CreatePostPage = () => {
 
     handleCreatePost(formData);
 
-    console.log(formData.get("data"));
-    console.log(formData.get("itemImages"));
+    // console.log(formData.get("data"));
+    // console.log(formData.get("itemImages"));
   };
 
   const handleFieldAppend = () => {

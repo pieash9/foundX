@@ -22,7 +22,7 @@ import { Button } from "@nextui-org/button";
 
 export const Navbar = () => {
   const { user, isLoading } = useUser();
-  console.log(isLoading, user);
+  // console.log(isLoading, user);
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
