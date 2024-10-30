@@ -22,6 +22,7 @@ import { useUser } from "@/src/context/user.provider";
 import { useCreatePost } from "@/src/hooks/post.hook";
 import Loading from "@/src/components/ui/Loading";
 import { useRouter } from "next/navigation";
+import generateDescription from "@/src/services/imageDescription";
 
 const cityOptions = allDistict()
   .sort()
@@ -30,6 +31,9 @@ const cityOptions = allDistict()
 const CreatePostPage = () => {
   const [imageFiles, setImageFiles] = useState<File[] | []>([]);
   const [imagePreviews, setImagePreviews] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const router = useRouter();
 
   const {
@@ -81,9 +85,6 @@ const CreatePostPage = () => {
     }
 
     handleCreatePost(formData);
-
-    // console.log(formData.get("data"));
-    // console.log(formData.get("itemImages"));
   };
 
   const handleFieldAppend = () => {
@@ -102,6 +103,23 @@ const CreatePostPage = () => {
       };
 
       reader.readAsDataURL(file);
+    }
+  };
+
+  const handleDescriptionGeneration = async () => {
+    setIsLoading(true);
+    try {
+      const response = await generateDescription(
+        imagePreviews[0],
+        "write a description for social media post describing the given image that starts 'Found this...'",
+      );
+
+      methods.setValue("description", response);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+      setError("Failed to generate description");
     }
   };
 
@@ -181,6 +199,22 @@ const CreatePostPage = () => {
               <div className="min-w-fit flex-1">
                 <FXTextarea label="Description" name="description" />
               </div>
+            </div>
+
+            <div className="flex justify-end gap-4">
+              {methods.getValues("description") && (
+                <Button onClick={() => methods.resetField("description")}>
+                  Clear
+                </Button>
+              )}
+              <Button
+                isLoading={isLoading}
+                isDisabled={imagePreviews.length > 0 ? false : true}
+                type="button"
+                onClick={handleDescriptionGeneration}
+              >
+                {isLoading ? "Generating..." : "Generate Description"}
+              </Button>
             </div>
 
             <Divider className="my-5" />
