@@ -1,6 +1,9 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { addClaimRequest } from "../services/claimRequest";
+import {
+  addClaimRequest,
+  getReceivedClaimRequest,
+} from "../services/claimRequest";
 import { FieldValues } from "react-hook-form";
 
 export const useAddClaimRequest = () => {
@@ -9,5 +12,12 @@ export const useAddClaimRequest = () => {
     mutationFn: async (claimData) => await addClaimRequest(claimData),
     onSuccess: () => toast.success("Claim request send successfully"),
     onError: (error) => toast.error(error?.message),
+  });
+};
+
+export const useGetReceivedClaimRequest = () => {
+  return useQuery({
+    queryKey: ["RECEIVED_CLAIM_REQUEST"],
+    queryFn: async () => await getReceivedClaimRequest(),
   });
 };
